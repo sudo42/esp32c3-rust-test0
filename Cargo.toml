@@ -1,0 +1,18 @@
+[package]
+name = "esp32c3-rust-test0"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+riscv-rt = { version = "0.10", optional = true }
+esp32c3-hal = "0.4.0" # we might have to use something else for WiFi? -> https://github.com/esp-rs/esp-idf-hal
+esp-alloc = { version = "0.1.0", features = ["oom-handler"] }
+#esp-println = { version = "0.3.1", features = [ "esp32c3", "jtag_serial" ] }
+esp-println = { version = "0.3.1", features = [  "log", "esp32c3" ] }
+esp-backtrace = { version = "0.4.0", features = [ "esp32c3", "panic-handler", "exception-handler" ] }
+
+log = "0.4.17"
+
+[features]
+default = ["rt"]
+rt = ["riscv-rt"]
